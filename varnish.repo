@@ -1,6 +1,6 @@
 [varnish-3.0]
 name=Varnish 3.0 for Enterprise Linux 5 - $basearch
-baseurl=http://repo.varnish-cache.org/redhat/varnish-3.0/el5/$basearch
+baseurl=http://repo.varnish-cache.org/redhat/varnish-3.0/@@DIST@@/$basearch
 enabled=1
 gpgcheck=0
 #gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-VARNISH

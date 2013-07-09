@@ -1,6 +1,7 @@
 Name:           varnish-release
 Version:        3.0
-Release:        1
+Release:        1%{?dist}
+
 Summary:        Varnish 3.0 package repository configuration
 
 Group:          System Environment/Base
@@ -33,6 +34,7 @@ rm -rf $RPM_BUILD_ROOT
 install -dm 755 $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
 install -pm 644 %{SOURCE0} \
     $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
+sed -i 's/@@DIST@@/%{dist}/' $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
 
 #install -Dpm 644 %{SOURCE1} \
 #    $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-VARNISH
