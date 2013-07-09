@@ -30,10 +30,9 @@ install -pm 644 %{SOURCE1} .
 rm -rf $RPM_BUILD_ROOT
 
 # yum
-install -dm 755 $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
-install -pm 644 %{SOURCE0} \
-    $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
-sed -i 's/@@DIST@@/%{dist}/' $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/%{SOURCE0}
+mkdir $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
+sed 's/@@DIST@@/%{dist}/' %{SOURCE0} \
+    > $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/$(basename "%{SOURCE0}")
 
 #install -Dpm 644 %{SOURCE1} \
 #    $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-VARNISH
