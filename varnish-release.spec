@@ -5,12 +5,11 @@ Release:        1%{?dist}
 Summary:        Varnish 3.0 package repository configuration
 
 Group:          System Environment/Base
-License:        GPL
+License:        BSD
 URL:            http://www.varnish-software.com/installation/redhat
 
 Source0:	varnish.repo
 Source1:        RPM-GPG-KEY-VARNISH
-#Source1:        GPL	
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
