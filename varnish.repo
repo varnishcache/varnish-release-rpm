@@ -1,5 +1,5 @@
 [varnish-3.0]
-name=Varnish 3.0 for Enterprise Linux 5 - $basearch
+name=Varnish 3.0 for Enterprise Linux @@DIST@@ - $basearch
 baseurl=http://repo.varnish-cache.org/redhat/varnish-3.0/@@DIST@@/$basearch
 enabled=1
 gpgcheck=0
