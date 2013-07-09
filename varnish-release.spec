@@ -30,7 +30,7 @@ install -pm 644 %{SOURCE1} .
 rm -rf $RPM_BUILD_ROOT
 
 # yum
-mkdir $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
 sed 's/@@DIST@@/%{dist}/' %{SOURCE0} \
     > $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/$(basename "%{SOURCE0}")
 
