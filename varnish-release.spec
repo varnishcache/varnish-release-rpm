@@ -1,14 +1,14 @@
 Name:           varnish-release
-Version:        3.0
+Version:        4.0
 Release:        1%{?dist}
 
-Summary:        Varnish 3.0 package repository configuration
+Summary:        Varnish %{version} package repository configuration
 
 Group:          System Environment/Base
 License:        BSD
 URL:            http://www.varnish-software.com/installation/redhat
 
-Source0:	varnish.repo
+Source0:	varnish4.repo
 Source1:        RPM-GPG-KEY-VARNISH
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -47,6 +47,9 @@ rm -rf $RPM_BUILD_ROOT
 #/etc/pki/rpm-gpg/*
 
 %changelog
+* Thu Apr 10 2014 Lasse Karstensen <lkarsten@varnish-software.com> 4.0-1
+- 4.0 release
+
 * Thu Jun 16 2011 Tollef Fog Heen <tfheen@varnish-software.com> 3.0-1
 - 3.0 release
 
