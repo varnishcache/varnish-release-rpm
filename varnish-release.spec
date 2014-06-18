@@ -42,6 +42,9 @@ install -Dpm 644 %{SOURCE1} \
 install -Dpm 644 %{SOURCE2} \
     $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-VARNISH-SOFTWARE
 
+install -Dpm 644 %{SOURCE2} \
+    $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-VARNISH-SOFTWARE
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
