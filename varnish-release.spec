@@ -36,8 +36,8 @@ mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
 sed 's/@@DIST@@/el%{rhel}/' %{SOURCE0} \
     > $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/$(basename "%{SOURCE0}")
 
-#install -Dpm 644 %{SOURCE1} \
-#    $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-VARNISH
+install -Dpm 644 %{SOURCE1} \
+    $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-VARNISH
 
 install -Dpm 644 %{SOURCE2} \
     $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-VARNISH-SOFTWARE
@@ -53,7 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Wed Jun 18 2014 Lasse Karstensen <lkarsten@varnish-software.com> 4.0-2
-- Add VS GPG key.
+- Install GPG keys.
 
 * Fri May 09 2014 Lasse Karstensen <lkarsten@varnish-software.com> 4.0-1
 - 4.0 release.
