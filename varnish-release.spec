@@ -10,6 +10,7 @@ URL:            http://www.varnish-software.com/installation/redhat
 
 Source0:        varnish.repo
 Source1:        RPM-GPG-KEY-VARNISH
+Source2:        RPM-GPG-KEY-VARNISH-SOFTWARE
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -23,6 +24,7 @@ GPG key as well as configuration for yum.
 %setup -q  -c -T
 install -pm 644 %{SOURCE0} .
 install -pm 644 %{SOURCE1} .
+install -pm 644 %{SOURCE2} .
 
 %build
 
@@ -37,6 +39,9 @@ sed 's/@@DIST@@/el%{rhel}/' %{SOURCE0} \
 #install -Dpm 644 %{SOURCE1} \
 #    $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-VARNISH
 
+install -Dpm 644 %{SOURCE2} \
+    $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-VARNISH-SOFTWARE
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -44,9 +49,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 #%doc GPL
 %config(noreplace) /etc/yum.repos.d/*
-#/etc/pki/rpm-gpg/*
+/etc/pki/rpm-gpg/RPM-GPG-KEY-VARNISH*
 
 %changelog
+* Wed Jun 18 2014 Lasse Karstensen <lkarsten@varnish-software.com> 4.0-2
+- Add VS GPG key.
+
 * Fri May 09 2014 Lasse Karstensen <lkarsten@varnish-software.com> 4.0-1
 - 4.0 release.
 
