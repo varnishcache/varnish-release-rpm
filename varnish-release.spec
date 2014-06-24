@@ -1,6 +1,6 @@
 Name:           varnish-release
 Version:        4.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 
 Summary:        Varnish %{version} package repository configuration
 

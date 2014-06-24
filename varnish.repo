@@ -2,5 +2,5 @@
 name=Varnish 4.0 for Enterprise Linux
 baseurl=https://repo.varnish-cache.org/redhat/varnish-4.0/@@DIST@@/$basearch
 enabled=1
-gpgcheck=0
+gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-VARNISH
