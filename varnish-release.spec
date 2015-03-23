@@ -1,6 +1,10 @@
 Name:           varnish-release
 Version:        4.0
+%if 0%{?rhel}  == 7
+Release:        4.el7
+%else
 Release:        4%{?dist}
+%endif
 
 Summary:        Varnish %{version} package repository configuration
 
