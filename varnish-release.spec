@@ -1,27 +1,19 @@
 Name:           varnish-release
 Version:        4.1
-%if 0%{?rhel}  == 7
-Release:        1.el7
-%else
-Release:        1%{?dist}
-%endif
-
+Release:	0
 Summary:        Varnish %{version} package repository configuration
-
 Group:          System Environment/Base
 License:        BSD
 URL:            http://www.varnish-software.com/installation/redhat
-
-Source0:        varnish.repo
+Source0:        varnish-4.1.repo
 Source1:        RPM-GPG-KEY-VARNISH
 Source2:        RPM-GPG-KEY-VARNISH-SOFTWARE
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-
 BuildArch:     noarch
 
 %description
-This package contains the varnish-cache.org repository
+This package contains the repo.varnish-cache.org repository
 GPG key as well as configuration for yum.
 
 %prep
@@ -37,7 +29,7 @@ rm -rf $RPM_BUILD_ROOT
 
 # yum
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
-sed 's/@@DIST@@/el%{rhel}/' %{SOURCE0} \
+install -Dpm 644 %{SOURCE0} \
     > $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/$(basename "%{SOURCE0}")
 
 install -Dpm 644 %{SOURCE1} \
@@ -54,7 +46,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-#%doc GPL
 %config(noreplace) /etc/yum.repos.d/*
 /etc/pki/rpm-gpg/RPM-GPG-KEY-VARNISH*
 
