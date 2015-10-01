@@ -1,10 +1,10 @@
 Name:           varnish-release
 Version:        4.1
 Release:	0
-Summary:        Varnish %{version} package repository configuration
+Summary:        Varnish Cache %{version} package repository configuration.
 Group:          System Environment/Base
 License:        BSD
-URL:            http://www.varnish-software.com/installation/redhat
+URL:            https://www.varnish-software.com/installation/redhat
 Source0:        varnish-4.1.repo
 Source1:        RPM-GPG-KEY-VARNISH
 Source2:        RPM-GPG-KEY-VARNISH-SOFTWARE
@@ -18,9 +18,6 @@ GPG key as well as configuration for yum.
 
 %prep
 %setup -q  -c -T
-install -pm 644 %{SOURCE0} .
-install -pm 644 %{SOURCE1} .
-install -pm 644 %{SOURCE2} .
 
 %build
 
@@ -29,8 +26,7 @@ rm -rf $RPM_BUILD_ROOT
 
 # yum
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
-install -Dpm 644 %{SOURCE0} \
-    > $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/$(basename "%{SOURCE0}")
+install -Dpm 644 %{SOURCE0} $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/$(basename "%{SOURCE0}")
 
 install -Dpm 644 %{SOURCE1} \
     $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-VARNISH
@@ -38,8 +34,6 @@ install -Dpm 644 %{SOURCE1} \
 install -Dpm 644 %{SOURCE2} \
     $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-VARNISH-SOFTWARE
 
-install -Dpm 644 %{SOURCE2} \
-    $RPM_BUILD_ROOT%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-VARNISH-SOFTWARE
 
 %clean
 rm -rf $RPM_BUILD_ROOT

@@ -3,16 +3,13 @@
 # This script builds the Varnish Cache release RPM.
 #
 # Author: Lasse Karstensen <lkarsten@varnish-software.com>, September 2015.
+#
 set -o errexit
 
 rm -rf build
 mkdir -p build
-cd build
 
-mock --init
-  #-D "dist .${ELVER}" \
-mock -v  --buildsrpm --spec ../*.spec --source ..  --resultdir .
-mock --clean
-  #-D "dist .${ELVER}" \
-mock --resultdir .  --rebuild ./varnish*src*rpm
-
+mock --init --quiet
+mock  --buildsrpm --spec *.spec --source content/  --resultdir build
+mock --clean --quiet
+mock --resultdir build  --rebuild build/varnish*src*rpm
