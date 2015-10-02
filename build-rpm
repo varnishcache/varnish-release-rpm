@@ -15,6 +15,8 @@ rm -rf rpm-build
 mkdir -p rpm-build
 
 mock --init --quiet
-mock --buildsrpm -D "dist .${ELVER}" --spec *.spec --source content/  --resultdir rpm-build/varnish-4.1
+mock --buildsrpm -D "dist .${ELVER}" --spec *.spec --source content/  --resultdir rpm-build/varnish-4.1/${ELVER}
 mock --clean --quiet
-mock -D "dist .${ELVER}" --resultdir rpm-build/varnish-4.1 --rebuild rpm-build/varnish-*/varnish*src*rpm
+mock -D "dist .${ELVER}" \
+	--resultdir rpm-build/varnish-4.1/${ELVER} \
+	--rebuild rpm-build/varnish-4.1/${ELVER}/varnish*src*rpm
