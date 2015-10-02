@@ -1,6 +1,6 @@
 Name:           varnish-release
 Version:        4.1
-Release:	1
+Release:	1%{?dist}
 Summary:        Varnish Cache %{version} package repository configuration.
 Group:          System Environment/Base
 License:        BSD

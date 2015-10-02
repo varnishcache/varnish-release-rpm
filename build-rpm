@@ -6,10 +6,15 @@
 #
 set -o errexit
 
-rm -rf build
-mkdir -p build
+if [ -z "${ELVER}" ]; then
+	echo "ERROR: Please set environment variable ELVER. (el6|el7)"
+	exit 1;
+fi
+
+rm -rf rpm-build
+mkdir -p rpm-build
 
 mock --init --quiet
-mock  --buildsrpm --spec *.spec --source content/  --resultdir build
+mock --buildsrpm -D "dist .${ELVER}" --spec *.spec --source content/  --resultdir rpm-build/varnish-${ELVER}
 mock --clean --quiet
-mock --resultdir build  --rebuild build/varnish*src*rpm
+mock -D "dist .${ELVER}" --resultdir rpm-build/varnish-${ELVER} --rebuild rpm-build/varnish-*/varnish*src*rpm
